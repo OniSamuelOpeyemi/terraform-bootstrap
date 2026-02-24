@@ -20,7 +20,7 @@ The standard approach is to start with the local backend, this enables us to pro
 - At this point, your backend resources exist in AWS, but Terraform is still using local state.
 
 3. Update Config to Use Remote Backend:
-- Now add a backend block to your main.tf (or better, in a separate [backend.tf](backend.tf) for clarity). Point it to the newly created resources.
+- Now add a backend block to your main.tf (or better, in a separate [backend.tf](./backend.tf) for clarity). Point it to the newly created resources.
 
 ```bash
 
