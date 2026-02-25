@@ -7,10 +7,11 @@ provider "aws" {
 resource "aws_s3_bucket" "onie-sammy_terraform_state" {
     bucket = "onie-sammy-terraform-state-bucket" # Must be globally unique
 
-    # Prevent accidental deletion
-    lifecycle {
+    # Prevent accidental deletion (Recommended in production env)
+   /* lifecycle {
         prevent_destroy = true
     }
+   */ 
 }
 
 # Enable versioning for state recovery
@@ -33,8 +34,9 @@ resource "aws_dynamodb_table" "terraform_locks" {
         type = "S"
     }
 
-    # Prevent accidental deletion
-    lifecycle {
+    # Prevent accidental deletion (Recommended in production env)
+   /* lifecycle {
         prevent_destroy = true
     }
+    */
 }
