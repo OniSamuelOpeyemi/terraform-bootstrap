@@ -50,3 +50,5 @@ If you have other infra (like the EC2 example), it's now managed via remote stat
 Commit your code to version control, but add .terraform/ and *.tfstate* to .gitignore to avoid checking in local state.
 
 _If you need to add more infra, just update main.tf and apply as usual._
+
+NB: It's important the hash key is lockID as a key attribute that needs to match for it to work. 
