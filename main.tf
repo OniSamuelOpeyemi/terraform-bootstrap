@@ -5,19 +5,28 @@ provider "aws" {
 
 # Define the S3 bucket for state storage
 resource "aws_s3_bucket" "onie-sammy_terraform_state" {
-    bucket = "onie-sammy-terraform-state-bucket" # Must be globally unique
+    bucket          = "onie-sammy-terraform-state-bucket" # Must be globally unique
+    
+    force_destroy   = true
 
     # Prevent accidental deletion (Recommended in production env)
    /* lifecycle {
         prevent_destroy = true
     }
    */ 
-}
 
+# Enabling encryption
+    server_side_encryption_configuration {
+        rule {
+            apply_server_side_encryption_by_default {
+                sse_algorithm = "AES256"
+            }
+        }
+    }
+}
 # Enable versioning for state recovery
 resource "aws_s3_bucket_versioning" "versioning" {
     bucket = "onie-sammy-terraform-state-bucket"
-
     versioning_configuration {
         status = "Enabled"
     }

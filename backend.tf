@@ -1,4 +1,4 @@
-terraform {
+ terraform {
   backend "s3" {
     bucket         = "onie-sammy-terraform-state-bucket"  # Match the bucket name from step 1
     key            = "global/state/terraform.tfstate"  # Path within the bucket for this project's state
